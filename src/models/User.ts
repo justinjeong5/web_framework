@@ -29,8 +29,17 @@ export class User {
 	}
 	fetch(): void {
 		const id = this.get('id');
-    axios.get(`${API}/users/${id}`).then(({ data }: AxiosResponse): void => {
-      this.set(data);
-    });
+		axios.get(`${API}/users/${id}`).then(({ data }: AxiosResponse): void => {
+			this.set(data);
+		});
+	}
+	save(): void {
+    const id = this.get('id');
+    
+		if (id) {
+			axios.put(`${API}/users/${id}`, this.data);
+		} else {
+			axios.post(`${API}/users`, this.data);
+		}
 	}
 }

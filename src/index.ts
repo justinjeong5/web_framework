@@ -1,9 +1,5 @@
-import axios from 'axios';
-import { API } from './utils/api';
+import { User } from './models/User';
 
-axios.post(`${API}/users`, {
-	name: 'Justin Jeong',
-	age: 31,
-});
+const user = new User({ name: 'NEW NAME', age: 100 });
 
-axios.get(`${API}/users`).then(({ data }) => console.log(data));
+user.save();
