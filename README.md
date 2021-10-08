@@ -1,9 +1,32 @@
 # Web Framework Typescript
 
-## start project
+## Start Project
 
+### Client
 ```zsh
 git clone https://github.com/justinjeong5/web_framework.git
+cd web_framework
 npm install
-parcel index.html
+npm start
 ```
+### Server
+```zsh
+# At least node version 12 required for json-server.
+npm i -g json-server
+npm run server
+```
+
+## Features
+
+1. Class needs to have the ability to store some data, retrieve it, and change it accordingly.
+2. Class needs to have the ability to notify the rest of the app when some data has changed.
+3. Class needs to have the ability to persist data to an outside server, and then retrieve it as some future point.
+
+## Model Methods
+<a href="https://viewer.diagrams.net/?highlight=0000FF&edit=_blank&layers=1&nav=1&title=%5BWF%5DclassInterface.drawio#R7ZbJbtswEIafRoBzCKDVcY5ekrQoWgR1gLZHWqJlIZSoSvTWp%2B8MF4myHMQt4BoF7IvFf4aL5pufkBNM891TRcrVZ55Q5vhusnOCmeP7XhSF8IfKXin3nhbSKkt0UivMs19Ui65W11lC606i4JyJrOyKMS8KGouORqqKb7tpS866u5YkpT1hHhPWV79liVgpdRS5rf6BZunK7Oy5OpITk6yFekUSvrWk4MEJphXnQj3luyllWDxTFzXv8Y1oc7CKFuKUCeOn7z9Cz93VL18fP80Wo5ePzy%2B3vlplQ9hav3DMSF2DpFHKk4u9KYegO9hsshI5A8GDx1pU%2FJVOOeOVTAlG%2FiIYDiFCWJYWoMVwQArByYZWIoPSjnUgz5IEF55sV5mg85LEuMsWGgnXfaUixgq6MKj4ukhookfLjLG5PlPNGb6g1KxDJBEdJSHo%2Bv1gZ7p7s3BegwP6mPKcimoPKWaCIbg%2FGG%2FbhvBDra2sZjAa0T2YNku3mOBBk%2FoDakGP2nOVbYigaDQiiBOMDcHnioNT3sf4T2H1esaVvz7GpfydCePwRIzBuTCGPYwpFYMSiH0hOVUQoVRZkd7YA3hw7mBHt1jnC2D1v8J9lL8zwb2%2FNNyoB7cGuOsyQZse%2BFPj3XBY8UqzT9M%2F9cY9G81hjyYvBnQD73NoVcdHawINtiDxq4oMbtCzOG1IcoSQClko8PHEuZvdXKEfgx5dGvpdDzoQTlNaHSffcfGQIcC6JEWH7PDnGr%2F3JrGqIeZX6YIMXGwG2TlHn1T%2FTOQHbCFulyTP2F5Nz3nBa0m7k1LLL2lMcMtduy886d6LDj%2FaI6gMqvKLtBmZSkWyVqDM8BkPFmFxIijwe7lek2u64a%2BW8dtlFJEmYl2soI1lin25NqJCY1ZRVJpVpOdgpFyHsieHynk41t5Dses%2BDGr%2FYdByIEakB1HXLkTNlYJxYqu0bkRN%2BVFOtRxpTmxcaeYdRLU3MWpVTjn0FDZNqMHSejZC17aZFkd3bxGLLF25uI2FVky7uQkGVgxc3eipdYDDrpHDpnVssdvQOq%2FX%2BcqwcE8ozxqbXC%2Fm%2FsU8uvTFPOp%2FW5ENHegLGFyfZzW9sjvCLggvze6%2Bx26JZbzCOwGedz54jr4n25h1QwYPvwE%3D">
+<img src="https://user-images.githubusercontent.com/44011462/136508586-0120246b-afc7-4e45-a335-263f79e4544a.png" width="200px" /></a>
+
+## Event Queue
+<a href="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=%5BFW%5DeventListeners.drawio#R7VlJj5swFP41aE6tWFNynCzTSt0OqdqZowMPcGNw5JhA5tfXEBNAzkKrlIxEuMD7%2FGzs9%2FktGM2axvlHhtbRV%2BoD0UzdzzVrppmm4Ti2uBXIbo%2BMDQmEDPtSqQYW%2BBUkqEs0xT5sWoqcUsLxug16NEnA4y0MMUaztlpASfutaxSCAiw8RFT0F%2FZ5tEddR6%2FxT4DDqHqzocuWGFXKEthEyKdZA7LmmjVllPL9U5xPgRTGq%2Byy7%2Fd0ovUwMQYJ79Lhdab%2FpN%2BDxMkew29P8GNlf0bvLDk3vqsWDL5YvxQp4xENaYLIvEYnjKaJD8WoupBqnS%2BUrgVoCPA3cL6TZKKUUwFFPCayFXLMnxvPL8VQ7x0pzXI5cinsKiHhbPfcFBq9CrHuVkpVv%2F36ikWdNJuENjRlHpyxVbX9EAuBn9EzD%2BQKrwAag5iP6MeAII637XkguT3Dg17NoHiQJP4FoXLcLSKpfNODR7C3elCI5pDzNi8bzugKppRQVqpYrrm0RiPREmBCGrjvgOvbAkcEh4nAPGFMEI2TLTCOhfc8yoYY%2B365abIIc1isUWnhTMQKZSPJiYsBID%2FPlWpb2cGVriZjjVG5XlZ77gGLGl5r6%2F%2BJDVNhQ3MmHZi4pl0VVvXyUlkNyus6TJijy1TYfTJhK0xMESFL5K3%2BxTFGngvL4IhjIHAD7%2B05hqVfpsPtkw5n2HR0CFS90jE6EqdmQ4hT9luLUx%2FuBVnngsztWJCNb1mQuWpBFlGxZwdZkLm3LsjG94LsNBW9BjrjWG08iJyjFGM3p2J8Tzqdk04Vri4fA5zYBf2knWqazbwT03QDQ809B%2Fe53WGAejYz0ORzjIteI56pJp9BfX%2Fql%2Fno9fvTVI9nhlIMdAhTV3INIdZ%2FG8q2xj8ba%2F4H">
+  <img src="https://user-images.githubusercontent.com/44011462/136513060-5f194dc3-a9f6-4d58-8575-76e4817a4a53.png" width="350px"/>
+</a>
