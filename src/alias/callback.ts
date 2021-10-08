@@ -1,1 +1,1 @@
-export type Callback = () => {};
+export type Callback = () => void;
