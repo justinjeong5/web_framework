@@ -4,7 +4,8 @@
   "description": "Web Framework Typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "server": "json-server -w server.json"
   },
   "repository": {
     "type": "git",
