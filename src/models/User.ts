@@ -1,12 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 
 import { UserProps } from '../interfaces/user';
-import { Callback } from '../alias/callback';
-import { Event } from '../interfaces/event';
 import { API } from '../utils/api';
+import { Eventing } from './Eventing';
 export class User {
-	events: Event = {};
-
+	events = new Eventing();
 	constructor(private data: UserProps) {}
 
 	get(propName: string): string | number {
@@ -15,18 +13,6 @@ export class User {
 	set(update: UserProps): void {
 		Object.assign(this.data, update);
 	}
-	on(eventName: string, callback: Callback): void {
-		const handlers = this.events[eventName] || [];
-		handlers.push(callback);
-		this.events[eventName] = handlers;
-	}
-	trigger(eventName: string): void {
-		const handlers = this.events[eventName];
-		if (!handlers?.length) {
-			return;
-		}
-		handlers.forEach((callback) => callback());
-	}
 	fetch(): void {
 		const id = this.get('id');
 		axios.get(`${API}/users/${id}`).then(({ data }: AxiosResponse): void => {
@@ -34,8 +20,8 @@ export class User {
 		});
 	}
 	save(): void {
-    const id = this.get('id');
-    
+		const id = this.get('id');
+
 		if (id) {
 			axios.put(`${API}/users/${id}`, this.data);
 		} else {
