@@ -1,10 +1,9 @@
-import { User } from './models/User';
+import axios from 'axios';
+import { API } from './utils/api';
 
-const user = new User({ name: 'justin', age: 20 });
+axios.post(`${API}/users`, {
+	name: 'Justin Jeong',
+	age: 31,
+});
 
-user.on('change', () => console.log("change1"));
-user.on('change', () => console.log("change2222"));
-user.on('click', () => console.log("click"));
-
-user.trigger('click');
-user.trigger('change');
+axios.get(`${API}/users`).then(({ data }) => console.log(data));
