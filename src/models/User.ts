@@ -1,4 +1,5 @@
 import { UserProps } from '../interfaces/user';
+import { Callback } from '../alias/callback';
 
 export class User {
 	constructor(private data: UserProps) {}
@@ -9,4 +10,5 @@ export class User {
 	set(update: UserProps): void {
 		Object.assign(this.data, update);
 	}
+	on(eventName: string, callback: Callback): void {}
 }
