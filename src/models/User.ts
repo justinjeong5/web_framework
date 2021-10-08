@@ -1,7 +1,9 @@
+import axios, { AxiosResponse } from 'axios';
+
 import { UserProps } from '../interfaces/user';
 import { Callback } from '../alias/callback';
 import { Event } from '../interfaces/event';
-
+import { API } from '../utils/api';
 export class User {
 	events: Event = {};
 
@@ -24,5 +26,11 @@ export class User {
 			return;
 		}
 		handlers.forEach((callback) => callback());
+	}
+	fetch(): void {
+		const id = this.get('id');
+    axios.get(`${API}/users/${id}`).then(({ data }: AxiosResponse): void => {
+      this.set(data);
+    });
 	}
 }
