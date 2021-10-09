@@ -1,5 +1,5 @@
 import { Callback } from "../alias/callback";
 
-export interface Event {
+export interface EventProps {
   [key: string]: Callback[]
 }

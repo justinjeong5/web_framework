@@ -1,31 +1,32 @@
-import axios, { AxiosResponse } from 'axios';
-
 import { UserProps } from '../interfaces/user';
-import { API } from '../utils/api';
+import { Attributes } from './Attributes';
 import { Eventing } from './Eventing';
+import { Sync } from './Sync';
+
+import { API } from '../utils/api';
+
+const rootUrl = `${API}/users`;
 export class User {
-	events = new Eventing();
-	constructor(private data: UserProps) {}
+	public events: Eventing;
+	public sync: Sync<UserProps>;
+	public attributes: Attributes<UserProps>;
 
-	get(propName: string): string | number {
-		return this.data[propName];
+	constructor(private data: UserProps) {
+		this.events = new Eventing();
+		this.sync = new Sync<UserProps>(rootUrl);
+		this.attributes = new Attributes<UserProps>(this.data);
 	}
-	set(update: UserProps): void {
-		Object.assign(this.data, update);
-	}
-	fetch(): void {
-		const id = this.get('id');
-		axios.get(`${API}/users/${id}`).then(({ data }: AxiosResponse): void => {
-			this.set(data);
-		});
-	}
-	save(): void {
-		const id = this.get('id');
 
-		if (id) {
-			axios.put(`${API}/users/${id}`, this.data);
-		} else {
-			axios.post(`${API}/users`, this.data);
-		}
+	get get() {
+		return this.attributes.get;
 	}
+	set() {}
+	get on() {
+		return this.events.on;
+	}
+	get trigger() {
+		return this.events.trigger;
+	}
+	fetch() {}
+	save() {}
 }
