@@ -1,5 +1,5 @@
-import { Callback } from 'alias/callback';
-import { EventPropsArray } from 'interfaces/EventProps';
+import { Callback } from '../alias/callback';
+import { EventPropsArray } from '../interfaces/EventProps';
 
 export class Eventing {
 	events: EventPropsArray = {};

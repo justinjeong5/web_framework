@@ -1,4 +1,4 @@
-import { UserProps } from '../interfaces/UserProps';
+import { PostProps } from '../interfaces/PostProps';
 import { Model } from '../models/Model';
 import { Collection } from '../models/Collection';
 import { Attributes } from '../models/Attributes';

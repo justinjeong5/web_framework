@@ -1,4 +1,4 @@
-import { Callback } from "alias/callback";
+import { Callback } from "../alias/callback";
 
 interface EventPropsArray {
   [key: string]: Callback[]

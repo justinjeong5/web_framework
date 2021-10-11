@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { Eventing } from 'models/Eventing';
+import { Eventing } from './Eventing';
 
 export class Collection<T, K> {
 	models: T[] = [];
@@ -16,7 +16,7 @@ export class Collection<T, K> {
 	fetch(): void {
 		axios.get(this.rootUrl).then((response: AxiosResponse) => {
 			this.models = response.data.map((value: K) => this.deserialize(value));
+			this.trigger('change');
 		});
-		this.trigger('change');
 	}
 }
