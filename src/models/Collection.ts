@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { Eventing } from './Eventing';
+import { Eventing } from 'models/Eventing';
 
 export class Collection<T, K> {
 	models: T[] = [];

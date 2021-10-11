@@ -1,10 +1,10 @@
-import { Model } from './Model';
-import { Attributes } from './Attributes';
-import { ApiSync } from './ApiSync';
-import { Eventing } from './Eventing';
-import { API } from '../utils/api';
-import { UserProps } from '../interfaces/UserProps';
-import { Collection } from './Collection';
+import { UserProps } from 'interfaces/UserProps';
+import { Model } from 'models/Model';
+import { Collection } from 'models/Collection';
+import { Attributes } from 'models/Attributes';
+import { ApiSync } from 'models/ApiSync';
+import { Eventing } from 'models/Eventing';
+import { API } from 'utils/api';
 
 const rootUrl = `${API}/users`;
 export class User extends Model<UserProps> {

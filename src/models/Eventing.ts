@@ -1,8 +1,8 @@
-import { Callback } from '../alias/callback';
-import { EventProps } from '../interfaces/event';
+import { Callback } from 'alias/callback';
+import { EventPropsArray } from 'interfaces/EventProps';
 
 export class Eventing {
-	events: EventProps = {};
+	events: EventPropsArray = {};
 
 	on = (eventName: string, callback: Callback): void => {
 		const handlers = this.events[eventName] || [];

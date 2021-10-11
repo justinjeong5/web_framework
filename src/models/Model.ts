@@ -1,6 +1,6 @@
 import { AxiosError, AxiosPromise, AxiosResponse } from 'axios';
-import { Callback } from '../alias/callback';
-import { HasId } from '../interfaces/HasId';
+import { Callback } from 'alias/callback';
+import { HasId } from 'interfaces/HasId';
 
 interface ModelAttributes<T extends HasId> {
 	set(update: T): void;
