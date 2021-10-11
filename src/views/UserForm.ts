@@ -6,16 +6,10 @@ import { View } from './View';
 export class UserForm extends View<User, UserProps> {
 	eventsMap(): EventProps {
 		return {
-			'click:button#random-age': this.onClickSetAge,
 			'click:button#name': this.onClickSetName,
 			'click:button#save': this.onClickSave,
 		};
 	}
-
-	onClickSetAge = (): void => {
-		const age = Math.round(Math.random() * 50) + 10;
-		this.model.set({ age });
-	};
 
 	onClickSetName = (): void => {
 		const input = this.parent.querySelector('input');
@@ -35,7 +29,6 @@ export class UserForm extends View<User, UserProps> {
       <div>
         <input value="${this.model.get('name')}"/>
 				<button id="name">Change Name</button>
-				<button id="random-age">Set Random Age</button>
 				<button id="save">Save User</button>
       </div>
     `;

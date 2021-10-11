@@ -5,19 +5,20 @@ import { Attributes } from '../models/Attributes';
 import { ApiSync } from '../models/ApiSync';
 import { Eventing } from '../models/Eventing';
 import { API } from '../utils/api';
+import { flattenObj } from '../utils/flattenObj';
 
-const rootUrl = `${API}/users`;
-export class User extends Model<UserProps> {
-	static buildUser(attrs: UserProps): User {
+const rootUrl = `${API}/posts`;
+export class Post extends Model<PostProps> {
+	static buildPost(attrs: PostProps): Post {
 		return new Model(
-			new Attributes<UserProps>(attrs),
+			new Attributes<PostProps>(attrs),
 			new Eventing(),
-			new ApiSync<UserProps>(rootUrl)
+			new ApiSync<PostProps>(rootUrl)
 		);
 	}
-	static buildUserCollection(): Collection<User, UserProps> {
-		return new Collection<User, UserProps>(rootUrl, (json: UserProps) =>
-			User.buildUser(json)
+	static buildPostCollection(): Collection<Post, PostProps> {
+		return new Collection<Post, PostProps>(rootUrl, (json: PostProps) =>
+			Post.buildPost(flattenObj(json))
 		);
 	}
 }

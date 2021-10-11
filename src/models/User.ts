@@ -5,6 +5,7 @@ import { Attributes } from '../models/Attributes';
 import { ApiSync } from '../models/ApiSync';
 import { Eventing } from '../models/Eventing';
 import { API } from '../utils/api';
+import { flattenObj } from '../utils/flattenObj';
 
 const rootUrl = `${API}/users`;
 export class User extends Model<UserProps> {
@@ -17,7 +18,7 @@ export class User extends Model<UserProps> {
 	}
 	static buildUserCollection(): Collection<User, UserProps> {
 		return new Collection<User, UserProps>(rootUrl, (json: UserProps) =>
-			User.buildUser(json)
+			User.buildUser(flattenObj(json))
 		);
 	}
 }

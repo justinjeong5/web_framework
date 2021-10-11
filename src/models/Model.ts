@@ -1,6 +1,7 @@
 import { AxiosError, AxiosPromise, AxiosResponse } from 'axios';
 import { Callback } from '../alias/callback';
 import { HasId } from '../interfaces/HasId';
+import { flattenObj } from '../utils/flattenObj';
 
 interface ModelAttributes<T extends HasId> {
 	set(update: T): void;
@@ -28,8 +29,12 @@ export class Model<T extends HasId> {
 	get get() {
 		return this.attributes.get;
 	}
+	get getAll() {
+		return this.attributes.getAll;
+	}
+
 	set(update: T): void {
-		this.attributes.set(update);
+		this.attributes.set(flattenObj(update));
 		this.events.trigger('change');
 	}
 	get on() {
@@ -47,7 +52,7 @@ export class Model<T extends HasId> {
 		this.sync
 			.fetch(id)
 			.then((response: AxiosResponse): void => {
-				this.set(response.data);
+				this.set(flattenObj(response.data));
 			})
 			.catch((error: AxiosError): void => {
 				console.error(error);
@@ -55,7 +60,7 @@ export class Model<T extends HasId> {
 			});
 	}
 	save(): void {
-		const user = this.attributes.getAll();
+		const user = flattenObj(this.attributes.getAll());
 		this.sync
 			.save(user)
 			.then((response: AxiosResponse): void => {
