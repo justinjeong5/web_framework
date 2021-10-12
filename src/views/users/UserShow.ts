@@ -17,18 +17,16 @@ export class UserShow extends View<User, UserProps> {
         <div>Email: ${this.getItem('email')}</div>
         <div>
           <h3>Address</h3>
-          <div>address: ${this.getItem('address.street')}</div>
-          <div>address: ${this.getItem('address.suite')}</div>
-          <div>address: ${this.getItem('address.city')}</div>
-          <div>address: ${this.getItem('address.zipcode')}</div>
-          <div>address: ${this.getItem('address.geo.lat')}</div>
-          <div>address: ${this.getItem('address.geo.lng')}</div>
+          <div>Street: ${this.getItem('address.street')}</div>
+          <div>Suite: ${this.getItem('address.suite')}</div>
+          <div>City: ${this.getItem('address.city')}</div>
+          <div>Zipcode: ${this.getItem('address.zipcode')}</div>
         </div>
         <div>
           <h3>Company</h3>
-          <div>name: ${this.getItem('company.name')}</div>
-          <div>name: ${this.getItem('company.catchPhrase')}</div>
-          <div>name: ${this.getItem('company.bs')}</div>
+          <div>Company Name: ${this.getItem('company.name')}</div>
+          <div>CatchPhrase: ${this.getItem('company.catchPhrase')}</div>
+          <div>BS: ${this.getItem('company.bs')}</div>
         </div>
       </fieldset>
     `;
