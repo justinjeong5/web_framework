@@ -1,6 +1,6 @@
 import { AxiosError, AxiosPromise, AxiosResponse } from 'axios';
 import { Callback } from '../alias/callback';
-import { HasId } from '../interfaces/HasId';
+import { HasId } from '../interfaces/hasId';
 import { flattenObj } from '../utils/flattenObj';
 
 interface ModelAttributes<T extends HasId> {
