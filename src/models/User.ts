@@ -1,11 +1,9 @@
 import { UserProps } from '../interfaces/UserProps';
 import { Model } from '../models/Model';
-import { Collection } from '../models/Collection';
 import { Attributes } from '../models/Attributes';
 import { ApiSync } from '../models/ApiSync';
 import { Eventing } from '../models/Eventing';
 import { API } from '../utils/api';
-import { flattenObj } from '../utils/flattenObj';
 
 const rootUrl = `${API}/users`;
 export class User extends Model<UserProps> {
@@ -14,11 +12,6 @@ export class User extends Model<UserProps> {
 			new Attributes<UserProps>(attrs),
 			new Eventing(),
 			new ApiSync<UserProps>(rootUrl)
-		);
-	}
-	static buildUserCollection(): Collection<User, UserProps> {
-		return new Collection<User, UserProps>(rootUrl, (json: UserProps) =>
-			User.buildUser(flattenObj(json))
 		);
 	}
 }
