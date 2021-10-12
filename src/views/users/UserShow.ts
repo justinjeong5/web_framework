@@ -4,12 +4,12 @@ import { View } from '../View';
 
 export class UserShow extends View<User, UserProps> {
   getItem(propName: keyof UserProps): UserProps[keyof UserProps] {
-		return this.getItem(propName) || 'Loading...';
+		return this.model.get(propName) || 'Loading...';
 	}
   template(): string {
 		return `
-      <div>
-        <h2>User Details</h2>
+      <fieldset style="margin: auto">
+        <legend>User Details</legend>
         <div>Name: ${this.getItem('name')}</div>
         <div>UserName: ${this.getItem('username')}</div>
         <div>Phone: ${this.getItem('phone')}</div>
@@ -30,9 +30,7 @@ export class UserShow extends View<User, UserProps> {
           <div>name: ${this.getItem('company.catchPhrase')}</div>
           <div>name: ${this.getItem('company.bs')}</div>
         </div>
-        <br>
-        <hr>
-      </div>
+      </fieldset>
     `;
 	}
 }

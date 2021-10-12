@@ -52,7 +52,7 @@ export class Model<T extends HasId> {
 		this.sync
 			.fetch(id)
 			.then((response: AxiosResponse): void => {
-				this.set(flattenObj(response.data));
+				this.set(response.data);
 			})
 			.catch((error: AxiosError): void => {
 				console.error(error);
@@ -60,7 +60,7 @@ export class Model<T extends HasId> {
 			});
 	}
 	save(): void {
-		const user = flattenObj(this.attributes.getAll());
+		const user = this.attributes.getAll();
 		this.sync
 			.save(user)
 			.then((response: AxiosResponse): void => {

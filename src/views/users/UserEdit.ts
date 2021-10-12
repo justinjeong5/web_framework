@@ -22,6 +22,7 @@ export class UserEdit extends View<User, UserProps> {
 		return `
       <div id='user-show'></div>
       <div id='user-form'></div>
+			<hr style="border:0; border-top:1px solid gray; margin:20px 0">
     `;
 	}
 }
