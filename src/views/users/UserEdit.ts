@@ -1,6 +1,6 @@
-import { UserProps } from '../interfaces/UserProps';
-import { User } from '../models/User';
-import { View } from './View';
+import { UserProps } from '../../interfaces/UserProps';
+import { User } from '../../models/User';
+import { View } from '../View';
 
 import { UserShow } from './UserShow';
 import { UserForm } from './UserForm';

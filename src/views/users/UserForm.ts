@@ -1,7 +1,7 @@
-import { EventProps } from '../interfaces/EventProps';
-import { UserProps } from '../interfaces/UserProps';
-import { User } from '../models/User';
-import { View } from './View';
+import { EventProps } from '../../interfaces/EventProps';
+import { UserProps } from '../../interfaces/UserProps';
+import { User } from '../../models/User';
+import { View } from '../View';
 
 export class UserForm extends View<User, UserProps> {
 	eventsMap(): EventProps {

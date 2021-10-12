@@ -1,6 +1,6 @@
-import { UserProps } from '../interfaces/UserProps';
-import { User } from '../models/User';
-import { View } from './View';
+import { UserProps } from '../../interfaces/UserProps';
+import { User } from '../../models/User';
+import { View } from '../View';
 
 export class UserShow extends View<User, UserProps> {
   getItem(propName: keyof UserProps): UserProps[keyof UserProps] {

@@ -7,8 +7,8 @@ export interface UserProps {
 	'address.suite'?: string;
 	'address.city'?: string;
 	'address.zipcode'?: string;
-	'address.geo.lat': number;
-	'address.geo.lng': number;
+	'address.geo.lat'?: number;
+	'address.geo.lng'?: number;
 	phone?: string;
 	website?: string;
 	'company.name'?: string;
